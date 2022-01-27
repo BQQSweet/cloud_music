@@ -1,0 +1,39 @@
+/* 用户信息样式 */
+.my-container .userinfo-container  {
+  position: relative;
+  width: 100%;
+  height:540rpx ;
+}
+.my-container .userinfo-container .userinfo{
+  box-sizing: border-box;
+  padding:80rpx 20rpx 0 20rpx;
+}
+.my-container .userinfo-container .userinfo .user-headimg{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  border: 6rpx solid #fff;
+}
+.my-container .userinfo-container .userinfo .background-image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left:0;
+  z-index: -1;
+}
+.my-container .userinfo-container .members-container{
+  width: 95%;
+  background-color: rgba(0,0,0,0.7);
+  border-radius: 12rpx;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 300rpx;
+}
+.my-container .slide-container{
+  height: 600rpx;
+  background-color: #fff;
+  position: relative;
+  top: -150rpx;
+}

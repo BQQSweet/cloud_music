@@ -1,0 +1,29 @@
+<!--pages/my/index.wxml-->
+<view class="my-container" style="padding-top:{{navHeight}}px">
+  <!-- 自定义导航栏 -->
+  <navbar title="我的"></navbar>
+  <!-- 用户信息区域 -->
+  <view class="userinfo-container">
+    <view class="userinfo dyc">
+      <image class="background-image" mode="aspectFill" src="/assets/image/mv.jpg"></image>
+      <image class="user-headimg" src="/assets/image/mv.jpg" mode="aspectFill"/>
+      <text>游客</text>
+    </view>
+    <view class="members-container">
+      <view class="top">
+        <view>
+          <text>云音乐会员</text>
+        </view>
+        <text>立即开通</text>
+      </view>
+      <view class="content">
+        <text>黑胶VIP</text>
+        <text>开通会员，畅享听</text>
+      </view>
+    </view>
+  </view>
+  <!-- 滑动区域 -->
+  <view style="transform: {{slideY}};transition: {{transition}};" class="slide-container" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
+  
+  </view>
+</view>

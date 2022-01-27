@@ -25,7 +25,6 @@ Page({
         this.getRecommendList()
         await this.getRankListId()
         await this.getRankList()
-        console.log(this.data);
     },
     //排行榜切换
     swiperOnChange(c) {
