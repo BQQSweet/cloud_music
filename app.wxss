@@ -1,4 +1,9 @@
 /**公共样式**/
+@import '/assets/css/layout.wxss';
+@import "/assets/iconfont/iconfont.wxss";
+@import "/assets/css/global.wxss";
 page{
-  height: 100%;
+  min-height: 100vh;
+  background-color: #f6f6f6;
+  font-family: 'PingFang SC','苹方 中等';
 }

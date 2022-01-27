@@ -1,0 +1,8 @@
+.cus_card{
+    width: 100%;
+    padding: 20rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    margin: 20rpx 0;
+}

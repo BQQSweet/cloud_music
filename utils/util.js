@@ -14,6 +14,13 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`
 }
 
+const getDeviceSystem=(system)=>{
+  return {
+    system:system.split(" ")[0].toLowerCase()==='ios'?'iphone':system.split(" ")[0].toLowerCase(),
+    version:system.split(" ")[1]
+  }
+}
+
 module.exports = {
-  formatTime
+  formatTime,getDeviceSystem
 }

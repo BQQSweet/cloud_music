@@ -1,0 +1,7 @@
+<view class="cus_header">
+    <view class="sub_t">{{subTitle}}</view>
+    <view class="title-container dxb">
+        <text class="title">{{title}}</text>
+        <text class="to-view-more sub_t">查看更多</text>
+    </view>
+</view>

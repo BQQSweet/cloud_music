@@ -1,23 +1,82 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称1 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称2 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<view class="index-container" style="padding-top:{{navHeight}}px">
+    <!-- 自定义导航栏 -->
+    <navbar title="云音乐"></navbar>
+
+    <!-- 轮播图 -->
+    <swiper class="banners" circular indicator-dots indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="rgb(238,156,167)" autoplay>
+        <swiper-item wx:for="{{bannerList}}" wx:key="bannerId">
+            <image src="{{item.pic}}" mode="widthFix"></image>
+        </swiper-item>
+    </swiper>
+
+    <!-- 内边距 -->
+    <view style="padding:0 20rpx">
+        <!--  图标导航区域 -->
+        <card>
+            <view class="nav-container dfc">
+                <view class="nav-item dfc_y">
+                    <text class="iconfont icon-rementuijian dfc"></text>
+                    <text>每日推荐</text>
+                </view>
+                <view class="nav-item dfc_y">
+                    <text class="iconfont icon-gedan dfc"></text>
+                    <text>歌单</text>
+                </view>
+                <view class="nav-item dfc_y">
+                    <text class="iconfont icon-paihangbang dfc"></text>
+                    <text>排行榜</text>
+                </view>
+                <view class="nav-item dfc_y">
+                    <text class="iconfont icon-diantai dfc"></text>
+                    <text>电台</text>
+                </view>
+                <view class="nav-item dfc_y">
+                    <text class="iconfont icon-zhibo dfc"></text>
+                    <text>直播</text>
+                </view>
+            </view>
+        </card>
+
+        <!--  推荐歌曲 -->
+        <card>
+            <view class="recommend-container">
+                <c-header subTitle="推荐歌曲" title="为你精心推荐"></c-header>
+                <view class="scroll-container">
+                    <i-toast id="toast" />
+                    <scroll-view scroll-x enable-flex class="scroll-box df">
+                        <view class="scroll-item dfc_y" wx:for="{{recommendList}}" wx:key="id">
+                            <image src="{{item.picUrl}}" mode="aspectFill"></image>
+                            <text class="more">{{item.name}}</text>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+        </card>
+
+        <!-- 排行榜 -->
+        <card>
+            <view class="rankList-container">
+                <c-header subTitle="排行榜" title="热歌风向标"></c-header>
+                <swiper class="swiper-container" next-margin="40rpx" bindchange="swiperOnChange">
+                    <swiper-item wx:for="{{rankList}}" wx:key="id">
+                        <view class="swiper-item">
+                            <text class="title">{{item.name}}</text>
+                            <view class="rank-item df" wx:for="{{item.tracks}}" wx:key="id" wx:for-item="item2">
+                                <image src="{{item2.al.picUrl}}" mode="aspectFill"></image>
+                                <text class="order dfc">{{index+1}}</text>
+                                <text class="music-name one">{{item2.name}}</text>
+                                <view class="author-name one sub_t">
+                                    - <text wx:for="{{item2.ar}}" wx:for-item="item3" wx:key="id">{{item3.name}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+        </card>
+
+    </view>
+
+
 </view>

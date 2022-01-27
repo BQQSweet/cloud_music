@@ -1,0 +1,3 @@
+<view class="cus_card">
+    <slot></slot>
+</view>

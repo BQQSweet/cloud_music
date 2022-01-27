@@ -1,0 +1,7 @@
+.cus_header .title-container{
+    margin-top: 20rpx;
+}
+.cus_header .title-container .to-view-more{
+    padding-bottom: 4rpx;
+    border-bottom:4rpx solid #ee9ca7;
+}

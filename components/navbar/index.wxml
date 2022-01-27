@@ -1,0 +1,1 @@
+<view class="cus_navbar dfc" style="height: {{navHeight}}px;padding-top: {{statusHeight}}px;">{{title}}</view>

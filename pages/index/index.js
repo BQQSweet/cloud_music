@@ -1,48 +1,101 @@
-// index.js
-// 获取应用实例
-const app = getApp()
-
+const app = getApp();
+import {
+    http
+} from '../../utils/wxUtils';
+import apis from '../../config/apis'
+const api = apis.index
 Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: true// 如需尝试获取用户信息可改为false
-  },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad() {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
-  },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log("res",res)
+    data: {
+        navHeight: app.globalData.navHeight,
+        bannerList: [],
+        recommendList: [],
+        systemInfo: wx.getStorageSync('systemInfo'),
+        typeList: {
+            android: 1,
+            iphone: 2,
+            ipad: 3
+        },
+        rankListId: "",
+        currentIndex: 0,
+        ids: [],
+        rankList: []
+    },
+    onLoad: async function (options) {
+        this.getBanners()
+        this.getRecommendList()
+        await this.getRankListId()
+        await this.getRankList()
+        console.log(this.data);
+    },
+    //排行榜切换
+    swiperOnChange(c) {
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+            currentIndex: c.detail.current
         })
-      }
-    })
-  },
-  getUserInfo(e) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
+    },
+    //获取轮播图数据
+    async getBanners() {
+        const {
+            typeList,
+            systemInfo: {
+                system: type
+            }
+        } = this.data
+        const [err, res] = await http(api.banners.path, {
+            type: typeList[type]
+        })
+        if (err) return
+        this.setData({
+            bannerList: res.banners
+        })
+    },
+    //获取推荐歌单
+    async getRecommendList() {
+        const [err, res] = await http(api.recommendList.path, {
+            limit: 10
+        })
+        if (err) return
+        this.setData({
+            recommendList: res.result
+        })
+    },
+    //获取所有排行榜歌单id
+    async getRankListId() {
+        const [err, res] = await http(api.topList.path)
+        if (err) return
+        const idsArr = res.list.splice(0, 5)
+        const ids = []
+        idsArr.map(v => {
+            ids.push(v.id)
+        })
+        this.setData({
+            ids
+        })
+    },
+    //获取排行榜
+    getRankList() {
+        const {
+            ids
+        } = this.data
+        const rankList = []
+        ids.map(async v => {
+            const [err, res] = await http(api.rankList.path, {
+                id: v
+            })
+            if (err) return
+            const {
+                name,
+                id,
+                tracks
+            } = res.playlist
+            rankList.push({
+                name,
+                id,
+                tracks: tracks.splice(0, 3)
+            })
+            this.setData({
+                rankList
+            })
+        })
+    }
 })

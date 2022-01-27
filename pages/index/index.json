@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "navbar":"/components/navbar",
+    "i-toast": "/iview/toast/index",
+    "c-header": "/components/header"
+  }
 }
