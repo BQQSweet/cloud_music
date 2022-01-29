@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
+    "pages/login/index",
     "pages/my/index"
   ],
   "networkTimeout": {
@@ -16,10 +16,6 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "card": "components/card/index",
-    "navbar":"/components/navbar"
-  },
   "tabBar": {
     "color": "#cdcdcd",
     "selectedColor": "#ee9ca7",
@@ -43,5 +39,12 @@
         "selectedIconPath": "/assets/tabbar/my_selected.png"
       }
     ]
+  },
+  "usingComponents": {
+    "card": "components/card/index",
+    "navbar": "/components/navbar",
+    "i-toast":"/iview/toast/index",
+    "i-cell-group": "/iview/cell-group/index",
+    "i-cell": "/iview/cell/index"
   }
 }

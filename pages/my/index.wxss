@@ -1,39 +1,94 @@
 /* 用户信息样式 */
-.my-container .userinfo-container  {
+.my-container {
+  height: 100%;
+}
+/* 用户信息样式 */
+.my-container .userinfo-container {
   position: relative;
   width: 100%;
-  height:540rpx ;
+  height: 350rpx;
 }
-.my-container .userinfo-container .userinfo{
-  box-sizing: border-box;
-  padding:80rpx 20rpx 0 20rpx;
-}
-.my-container .userinfo-container .userinfo .user-headimg{
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
-  border: 6rpx solid #fff;
-}
-.my-container .userinfo-container .userinfo .background-image {
-  width: 100%;
+
+.my-container .userinfo-container .background-image {
   position: absolute;
-  top: 0;
-  left:0;
+  height: 480rpx;
+  filter: blur(2px);
   z-index: -1;
+  top: -4rpx;
 }
-.my-container .userinfo-container .members-container{
+
+.my-container .userinfo-container .userinfo {
+  box-sizing: border-box;
+  color: #fff;
+  padding-top: 30rpx;
+}
+
+.my-container .userinfo-container .userinfo .user-headimg {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 8rpx solid rgba(255, 255, 255, 0.8);
+}
+/* 会员卡样式 */
+.my-container .userinfo-container .members-container {
+  padding: 20rpx;
   width: 95%;
-  background-color: rgba(0,0,0,0.7);
-  border-radius: 12rpx;
+  background: linear-gradient(to right top, #ffc3a0, #FFAFBD);
+  border-radius: 20rpx;
   position: absolute;
-  bottom: 0;
   left: 50%;
+  top: 230rpx;
   transform: translateX(-50%);
   height: 300rpx;
+  color: #333;
+  box-sizing: border-box;
 }
-.my-container .slide-container{
-  height: 600rpx;
-  background-color: #fff;
-  position: relative;
-  top: -150rpx;
+.my-container .userinfo-container .members-container .top .open {
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+  height: 50rpx;
+  width: 120rpx;
+  border-radius: 50rpx;
+  font-size: 24rpx;
+}
+.my-container .userinfo-container .members-container .top .vip-icon {
+  width: 40rpx;
+}
+/* 滑动区域样式 */
+.my-container .panel-container {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: -80rpx;
+}
+
+.my-container .panel-container .top-image {
+  width: 100%;
+}
+/* 四个图标功能区 */
+.my-container .panel-container .top-function {
+  margin-top: -22rpx;
+}
+.my-container .panel-container .top-function .iconfont {
+  font-size: 46rpx;
+  color: #e0959f;
+}
+.my-container .panel-container .top-function .top {
+  font-size: 24rpx;
+}
+/* 最近播放 */
+.my-container .panel-container .play-container .play-item{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 16rpx;
+  margin-right: 20rpx;
+}
+.my-container .panel-container .play-container .play-item image{
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+.my-container .panel-container .play-container .scroll-container{
+  margin-top: 20rpx;
+}
+.my-container .panel-container .play-container .scroll-container .play-items .play-item{
+  flex-shrink: 0;
 }

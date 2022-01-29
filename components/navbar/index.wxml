@@ -1,1 +1,4 @@
-<view class="cus_navbar dfc" style="height: {{navHeight}}px;padding-top: {{statusHeight}}px;">{{title}}</view>
+<view class="cus_navbar dfc" style="height: {{navHeight}}px;padding-top: {{statusHeight}}px;">
+  <text wx:if="{{ifBack}}" bindtap="goBack" class='iconfont icon-fanhui'></text>
+  <text class="title">{{title}}</text>
+</view>

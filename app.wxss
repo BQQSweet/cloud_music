@@ -3,7 +3,7 @@
 @import "/assets/iconfont/iconfont.wxss";
 @import "/assets/css/global.wxss";
 page{
-  min-height: 100vh;
+  height: 100%;
   background-color: #f6f6f6;
   font-family: 'PingFang SC','苹方 中等';
 }

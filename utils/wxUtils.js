@@ -33,26 +33,20 @@ const getStorage = (key) => {
     })
 }
 const http = (url, data = {}, method = 'GET') => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         wx.request({
             url: DEVELOP_URL + url,
             data,
             method,
             success: (res) => {
-                if (res.statusCode !== 200) {
-                    return $Toast({
-                        content: codeList[res.statusCode],
-                        type: 'error'
-                    });
+                if (res.data.code !== 200) {
+                    resolve([res.data,null])
+                } else {
+                    resolve([null,res.data])
                 }
-                resolve([null, res.data])
             },
             fail: (err) => {
-                $Toast({
-                    content: err,
-                    type: 'error'
-                });
-                reject(err)
+                resolve([err, null])
             }
         })
     })

@@ -1,0 +1,41 @@
+/* pages/login/index.wxss */
+.login-container{
+  height: 100%;
+  background: #fff;  
+  padding:0 20rpx;
+  box-sizing: border-box;
+}
+.login-container .welcome{
+  font-size: 50rpx;
+  height: 200rpx;
+  /* font-weight: 600; */
+}
+.login-container .login-form{
+  width: 100%;
+  position: relative;
+  top: 10%;
+}
+.login-container .login-form image{
+  width: 200rpx;
+  position: absolute;
+  top: -320rpx;
+  right: 0;
+}
+.login-container .login-form .cus-input{
+  border-radius: 12rpx;
+  background-color: rgb(248, 248, 248);
+  margin-top: 20rpx;
+}
+.login-container .login-form button{
+  width: 100%;
+  margin-top: 20rpx;
+  border-radius: 40rpx;
+  background: linear-gradient(to right, #ffdde1, #ee9ca7); 
+  color: #fff;
+}
+.login-container .reg-container{
+  position: absolute;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}

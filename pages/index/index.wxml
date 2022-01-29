@@ -1,7 +1,8 @@
 <!--index.wxml-->
 <view class="index-container" style="padding-top:{{navHeight}}px">
+    <i-toast id="toast" />
     <!-- 自定义导航栏 -->
-    <navbar title="云音乐"></navbar>
+    <navbar ifBack="{{false}}" title="云音乐"></navbar>
 
     <!-- 轮播图 -->
     <swiper class="banners" circular indicator-dots indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="rgb(238,156,167)" autoplay>
@@ -10,7 +11,7 @@
         </swiper-item>
     </swiper>
 
-    <!-- 内边距 -->
+    <!-- 内容区域 -->
     <view style="padding:0 20rpx">
         <!--  图标导航区域 -->
         <card>
@@ -43,7 +44,6 @@
             <view class="recommend-container">
                 <c-header subTitle="推荐歌曲" title="为你精心推荐"></c-header>
                 <view class="scroll-container">
-                    <i-toast id="toast" />
                     <scroll-view scroll-x enable-flex class="scroll-box df">
                         <view class="scroll-item dfc_y" wx:for="{{recommendList}}" wx:key="id">
                             <image src="{{item.picUrl}}" mode="aspectFill"></image>
@@ -77,6 +77,4 @@
         </card>
 
     </view>
-
-
 </view>

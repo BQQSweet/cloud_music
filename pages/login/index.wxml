@@ -1,0 +1,25 @@
+<!--pages/login/index.wxml-->
+<view class="login-container" style="padding-top:{{navHeight}}px">
+  <i-toast id="login" />
+  <!-- 自定义导航栏 -->
+  <navbar title="登录"></navbar>
+  <!-- 登录表单 -->
+  <block>
+    <view class="welcome dfc">欢迎回来!</view>
+    <view class="login-form dfc_y">
+      <image mode="aspectFit" src="/assets/image/login/login_cat.png"></image>
+      <view style="width: 100%;">
+        <i-input id="phone" maxlength="{{11}}" value="{{queryInfo.phone}}" i-class="cus-input" title="手机号码" autofocus placeholder="请输入手机号码" bind:change="bindChangeHanlder"></i-input>
+        <i-input type="password" id="password" maxlength="{{12}}" value="{{queryInfo.password}}" i-class="cus-input" title="密码" placeholder="请输入密码" bind:change="bindChangeHanlder"></i-input>
+      </view>
+      <button bindtap="login">登录</button>
+      <text style="margin-top: 20rpx;"></text>
+      <a href="">忘记密码?</a>
+    </view>
+  </block>
+  <!-- 注册 -->
+  <view class="reg-container">
+    <text>还没有账号？</text>
+    <text>马上注册</text>
+  </view>
+</view>

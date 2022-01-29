@@ -6,6 +6,11 @@
   display: flex;
   flex-direction: column;
 }
+.dy_c{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .dfc_y{
   display: flex;
   flex-direction: column;
