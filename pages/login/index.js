@@ -21,7 +21,8 @@ Page({
     navHeight: app.globalData.navHeight,
     queryInfo: {
       phone: "",
-      password: ""
+      password: "",
+      login:true
     }
   },
   onLoad: function (options) {
@@ -54,7 +55,7 @@ Page({
     } = this.data
     //前端验证
     if (!this.validation(queryInfo.phone, checkPhone) || !this.validation(queryInfo.password, checkPassword)) return
-    const [err, res] = await http(api.cellphone.path, queryInfo)
+    const [err, res] = await http(api.cellphone, queryInfo)
     if (err) {
       console.log(err);
       return $Toast({
@@ -63,16 +64,15 @@ Page({
         selector: "#login"
       })
     }
-
     $Toast({
       content: '登录成功',
       type: 'success',
       selector: "#login"
     })
-    //存储token
-    wx.setStorageSync('token', res.token)
     //存储个人信息
     wx.setStorageSync('profile', JSON.stringify(res.profile))
+    //存储cookie
+    wx.setStorageSync('cookie', res.cookie)
     wx.reLaunch({
       url: '/pages/my/index'
     })

@@ -40,7 +40,7 @@ Page({
                 system: type
             }
         } = this.data
-        const [err, res] = await http(api.banners.path, {
+        const [err, res] = await http(api.banners, {
             type: typeList[type]
         })
         if (err) return
@@ -50,7 +50,7 @@ Page({
     },
     //获取推荐歌单
     async getRecommendList() {
-        const [err, res] = await http(api.recommendList.path, {
+        const [err, res] = await http(api.recommendList, {
             limit: 10
         })
         if (err) return
@@ -60,7 +60,7 @@ Page({
     },
     //获取所有排行榜歌单id
     async getRankListId() {
-        const [err, res] = await http(api.topList.path)
+        const [err, res] = await http(api.topList)
         if (err) return
         const idsArr = res.list.splice(0, 5)
         const ids = []
@@ -78,7 +78,7 @@ Page({
         } = this.data
         const rankList = []
         ids.map(async v => {
-            const [err, res] = await http(api.rankList.path, {
+            const [err, res] = await http(api.rankList, {
                 id: v
             })
             if (err) return

@@ -1,10 +1,6 @@
 import {
     DEVELOP_URL
 } from "../config/request"
-import {
-    $Toast
-} from '../iview/base/index'
-import codeList from '../config/statusCode'
 // 通过 wx.getSetting 查询一下用户是否授权
 const getSetting = (setting) => {
     const scope = 'scope.' + setting
@@ -33,16 +29,17 @@ const getStorage = (key) => {
     })
 }
 const http = (url, data = {}, method = 'GET') => {
+    data.cookie = wx.getStorageSync('cookie') || ""
     return new Promise((resolve) => {
         wx.request({
-            url: DEVELOP_URL + url,
+            url: DEVELOP_URL + url.path,
             data,
             method,
             success: (res) => {
                 if (res.data.code !== 200) {
-                    resolve([res.data,null])
+                    resolve([res.data, null])
                 } else {
-                    resolve([null,res.data])
+                    resolve([null, res.data])
                 }
             },
             fail: (err) => {

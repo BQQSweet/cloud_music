@@ -72,7 +72,7 @@ Page({
   },
   //判断是否登录
   isLogin() {
-    const token = wx.getStorageSync('token')
+    const token = wx.getStorageSync('cookie')
     if (token) {
       this.setData({
         isLogin: true

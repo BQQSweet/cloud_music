@@ -12,7 +12,7 @@
     </swiper>
 
     <!-- 内容区域 -->
-    <view style="padding:0 20rpx">
+    <padding>
         <!--  图标导航区域 -->
         <card>
             <view class="nav-container dfc">
@@ -76,5 +76,5 @@
             </view>
         </card>
 
-    </view>
+    </padding>
 </view>

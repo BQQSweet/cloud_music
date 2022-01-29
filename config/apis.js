@@ -22,5 +22,19 @@ export default {
             path: 'login/cellphone',
             auth: false
         }
+    },
+    video: {
+        videotags: {
+            path: 'video/group/list',
+            auth: false
+        },
+        videoList: {
+            path: 'video/group',
+            auth: false
+        },
+        videoDetail:{
+            path: 'video/url',
+            auth: false
+        }
     }
 }

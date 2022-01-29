@@ -1,0 +1,7 @@
+<!--components/search/index.wxml-->
+<view class="cus_search">
+  <input type="text" />
+  <view class="suffix dfc">
+    <i-icon type="search" size="24" color="#fff" />
+  </view>
+</view>

@@ -1,0 +1,4 @@
+<!--components/padding/index.wxml-->
+<view class="cus_padding">
+  <slot></slot>
+</view>

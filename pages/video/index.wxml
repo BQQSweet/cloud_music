@@ -1,0 +1,56 @@
+<!--pages/video/index.wxml-->
+<view class="video-container" style="padding-top:{{navHeight}}px">
+  <!-- 自定义导航栏 -->
+  <navbar ifBack="{{false}}" title="视频"></navbar>
+  <!-- 内容区域 -->
+  <view class="content-container">
+    <!-- 搜索组件 -->
+    <view style="padding:0 20rpx;margin-top: 20rpx;">
+      <search></search>
+    </view>
+    <view class="videos-items">
+      <!-- 导航区域 -->
+      <van-tabs color="#ee9ca7" swipeable active="{{ active }}" bind:change="onChange">
+        <van-tab name="{{item.id}}" title-style="padding:0 20rpx;" wx:for="{{tabsList}}" wx:key="id" title="{{item.name}}">
+        </van-tab>
+      </van-tabs>
+      <scroll-view style="height: 100%;overflow: hidden;" scroll-y>
+        <padding>
+          <card wx:for="{{videoList}}">
+            <view style="width:100%;height: 450rpx;overflow: hidden;">
+              <van-transition>
+                <view class="cover-container" wx:if="{{!item.displayed}}">
+                  <image style="width:100%" src="{{item.data.coverUrl}}">
+                  </image>
+                  <view class="cover dfc">
+                    <text bindtap="playVideo" data-index="{{index}}" data-id="{{item.data.vid}}" style="color: #fff;font-size: 150rpx;" class="iconfont icon-bofang"></text>
+                  </view>
+                </view>
+              </van-transition>
+
+              <video autoplay src="{{item.data.urlInfo}}" wx:if="{{item.displayed}}" style="width: 100%;" play-btn-position="center" poster="{{item.data.coverUrl}}" id="v-{{index}}">
+              </video>
+            </view>
+            <view class="videoinfo df">
+              <view class="creator dfc">
+                <image class="creator-avatar" src="{{item.data.creator.avatarUrl}}" mode="aspectFill"></image>
+                <view class="one" style="margin-left: 20rpx;width: 300rpx;">{{item.data.creator.nickname}}</view>
+              </view>
+              <view style="width: 100%;" class="dxb">
+                <i-badge i-class-alone="badge-class" count="{{item.data.praisedCount}}" overflow-count="9999">
+                  <view wx:if="{{!item.data.praised}}" class="iconfont icon-xihuan"></view>
+                  <view wx:else class="iconfont icon-xihuan1"></view>
+                </i-badge>
+                <i-badge i-class-alone="badge-class" count="{{item.data.commentCount}}" overflow-count="9999">
+                  <view class="iconfont icon-pinglun"></view>
+                </i-badge>
+                <text class="iconfont icon-androidgengduo"></text>
+              </view>
+            </view>
+            <i-divider></i-divider>
+          </card>
+        </padding>
+      </scroll-view>
+    </view>
+  </view>
+</view>

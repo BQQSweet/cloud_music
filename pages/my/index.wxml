@@ -30,41 +30,44 @@
   <!-- 滑动区域 -->
   <view class="panel-container" style="transform:{{slideY}};transition: {{transition}};" bindtouchstart="handleTouchStart" bindtouchend="handleTouchEnd" catchtouchmove="handleTouchMove">
     <image class="top-image df" src="/assets/image/my/bg.png" mode="widthFix"></image>
-    <view style="padding:0 20rpx; background-color: #f6f6f6;">
-      <!-- 四个图标功能区域 -->
-      <view class="top-function">
-        <card>
-          <view class="top dxb">
-            <view class="dy_c" wx:for="{{panelList}}" wx:key="index">
-              <text class="{{item.icon}}"></text>
-              <text>{{item.title}}</text>
-            </view>
-          </view>
-        </card>
-      </view>
-      <!-- 最近播放 -->
-      <view class="play-container">
-        <card>
-          <text>最近播放</text>
-          <scroll-view scroll-x class="scroll-container">
-            <view class="play-items df">
-              <view class="play-item" wx:for="{{6}}">
-                <image src="/assets/image/mv.jpg" mode="aspectFill"></image>
+    <scroll-view scroll-y style="height: 820rpx;margin-top: -4rpx;">
+      <view style="padding:20rpx 20rpx 120rpx 20rpx; background-color: #f6f6f6;">
+        <!-- 四个图标功能区域 -->
+        <view class="top-function">
+          <card>
+            <view class="top dxb">
+              <view class="dy_c" wx:for="{{panelList}}" wx:key="index">
+                <text class="{{item.icon}}"></text>
+                <text>{{item.title}}</text>
               </view>
             </view>
-          </scroll-view>
-        </card>
+          </card>
+        </view>
+        <!-- 最近播放 -->
+        <view class="play-container">
+          <card>
+            <text>最近播放</text>
+            <scroll-view scroll-x class="scroll-container">
+              <view class="play-items df">
+                <view class="play-item" wx:for="{{6}}" wx:key="index">
+                  <image src="/assets/image/mv.jpg" mode="aspectFill"></image>
+                </view>
+              </view>
+            </scroll-view>
+          </card>
+        </view>
+        <!-- 我的数据 -->
+        <view class="mydata-container">
+          <card>
+            <i-cell-group>
+              <i-cell title="我的喜欢" is-link></i-cell>
+              <i-cell title="我的音乐" is-link></i-cell>
+              <i-cell title="我的收藏" is-link></i-cell>
+            </i-cell-group>
+          </card>
+        </view>
       </view>
-      <!-- 我的数据 -->
-      <view class="mydata-container">
-        <card>
-          <i-cell-group>
-            <i-cell title="我的喜欢" is-link></i-cell>
-            <i-cell title="我的音乐" is-link></i-cell>
-            <i-cell title="我的收藏" is-link></i-cell>
-          </i-cell-group>
-        </card>
-      </view>
-    </view>
+    </scroll-view>
+
   </view>
 </view>

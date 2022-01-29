@@ -1,0 +1,22 @@
+.cus_search{
+  border-radius: 60rpx;
+  position: relative;
+  overflow: hidden;
+  border:2px solid #f6f6f6;
+}
+.cus_search input{
+  background-color: #fff;
+  height: 60rpx;
+  padding-left: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+.cus_search .suffix{
+  border-radius: 0 60rpx 60rpx 0;
+  position: absolute;
+  background: linear-gradient(to right, #ffdde1, #ee9ca7);
+  height: 100%;
+  width: 80rpx;
+  top: 0;
+  right: 0;
+}
